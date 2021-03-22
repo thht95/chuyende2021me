@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLPHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChitietHoadon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoadonID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <NavigationProperty Name="Hoadon" Relationship="Self.FK_ChitietHoadon_Hoadon" FromRole="ChitietHoadon" ToRole="Hoadon" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ChitietHoadon_Product" FromRole="ChitietHoadon" ToRole="Product" />
+    <Property Name="Soluong" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Hoadon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NhanvienID" Type="Int32" Nullable="false" />
+    <Property Name="KhachhangID" Type="Int32" Nullable="false" />
+    <Property Name="PhonghatID" Type="Int32" Nullable="false" />
+    <Property Name="LoaiPhong" Type="Boolean" />
+    <Property Name="Thanhtien" Type="Int32" />
+    <NavigationProperty Name="ChitietHoadons" Relationship="Self.FK_ChitietHoadon_Hoadon" FromRole="Hoadon" ToRole="ChitietHoadon" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_Hoadon_KhachHang" FromRole="Hoadon" ToRole="KhachHang" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_Hoadon_NhanVien" FromRole="Hoadon" ToRole="NhanVien" />
+    <NavigationProperty Name="Phonghat" Relationship="Self.FK_Hoadon_Phonghat" FromRole="Hoadon" ToRole="Phonghat" />
+    <Property Name="ThoigianBatdau" Type="DateTime" Precision="3" />
+    <Property Name="Tienphong" Type="Int32" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hoadons" Relationship="Self.FK_Hoadon_KhachHang" FromRole="KhachHang" ToRole="Hoadon" />
+    <NavigationProperty Name="Phonghats" Relationship="Self.FK_Phonghat_KhachHang" FromRole="KhachHang" ToRole="Phonghat" />
+  </EntityType>
+  <EntityType Name="LichsuXuatNhapkho">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NhanvienID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_LichsuNhapkho_NhanVien" FromRole="LichsuXuatNhapkho" ToRole="NhanVien" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_LichsuXuatNhapkho_Product" FromRole="LichsuXuatNhapkho" ToRole="Product" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="Ghichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Thoigian" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Trangthai" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="LastLoginAt" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Hoadons" Relationship="Self.FK_Hoadon_NhanVien" FromRole="NhanVien" ToRole="Hoadon" />
+    <NavigationProperty Name="LichsuXuatNhapkhoes" Relationship="Self.FK_LichsuNhapkho_NhanVien" FromRole="NhanVien" ToRole="LichsuXuatNhapkho" />
+    <NavigationProperty Name="TimeLogins" Relationship="Self.FK_TimeLogin_NhanVien" FromRole="NhanVien" ToRole="TimeLogin" />
+  </EntityType>
+  <EntityType Name="Phonghat">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="Int32" />
+    <Property Name="Trangthai" Type="Boolean" />
+    <Property Name="IsReserved" Type="Boolean" />
+    <Property Name="IsReserverdBy" Type="Int32" />
+    <NavigationProperty Name="Hoadons" Relationship="Self.FK_Hoadon_Phonghat" FromRole="Phonghat" ToRole="Hoadon" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_Phonghat_KhachHang" FromRole="Phonghat" ToRole="KhachHang" />
+    <Property Name="Dongia" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenHang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="Donvi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChitietHoadons" Relationship="Self.FK_ChitietHoadon_Product" FromRole="Product" ToRole="ChitietHoadon" />
+    <NavigationProperty Name="LichsuXuatNhapkhoes" Relationship="Self.FK_LichsuXuatNhapkho_Product" FromRole="Product" ToRole="LichsuXuatNhapkho" />
+    <Property Name="Dongia" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TimeLogin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NhanvienID" Type="Int32" />
+    <Property Name="LoginAt" Type="DateTime" Precision="0" />
+    <Property Name="LogoutAt" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_TimeLogin_NhanVien" FromRole="TimeLogin" ToRole="NhanVien" />
+  </EntityType>
+  <Association Name="FK_ChitietHoadon_Hoadon">
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="0..1" />
+    <End Role="ChitietHoadon" Type="Self.ChitietHoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hoadon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChitietHoadon">
+        <PropertyRef Name="HoadonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChitietHoadon_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ChitietHoadon" Type="Self.ChitietHoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChitietHoadon">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hoadon_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Hoadon">
+        <PropertyRef Name="KhachhangID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hoadon_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Hoadon">
+        <PropertyRef Name="NhanvienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hoadon_Phonghat">
+    <End Role="Phonghat" Type="Self.Phonghat" Multiplicity="1" />
+    <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phonghat">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Hoadon">
+        <PropertyRef Name="PhonghatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Phonghat_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="Phonghat" Type="Self.Phonghat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Phonghat">
+        <PropertyRef Name="IsReserverdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichsuNhapkho_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="LichsuXuatNhapkho" Type="Self.LichsuXuatNhapkho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LichsuXuatNhapkho">
+        <PropertyRef Name="NhanvienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichsuXuatNhapkho_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="LichsuXuatNhapkho" Type="Self.LichsuXuatNhapkho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LichsuXuatNhapkho">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeLogin_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="TimeLogin" Type="Self.TimeLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TimeLogin">
+        <PropertyRef Name="NhanvienID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLPHEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChitietHoadons" EntityType="Self.ChitietHoadon" />
+    <EntitySet Name="Hoadons" EntityType="Self.Hoadon" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="LichsuXuatNhapkhoes" EntityType="Self.LichsuXuatNhapkho" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="Phonghats" EntityType="Self.Phonghat" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TimeLogins" EntityType="Self.TimeLogin" />
+    <AssociationSet Name="FK_ChitietHoadon_Hoadon" Association="Self.FK_ChitietHoadon_Hoadon">
+      <End Role="Hoadon" EntitySet="Hoadons" />
+      <End Role="ChitietHoadon" EntitySet="ChitietHoadons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChitietHoadon_Product" Association="Self.FK_ChitietHoadon_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ChitietHoadon" EntitySet="ChitietHoadons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hoadon_KhachHang" Association="Self.FK_Hoadon_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="Hoadon" EntitySet="Hoadons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hoadon_NhanVien" Association="Self.FK_Hoadon_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="Hoadon" EntitySet="Hoadons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hoadon_Phonghat" Association="Self.FK_Hoadon_Phonghat">
+      <End Role="Phonghat" EntitySet="Phonghats" />
+      <End Role="Hoadon" EntitySet="Hoadons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Phonghat_KhachHang" Association="Self.FK_Phonghat_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="Phonghat" EntitySet="Phonghats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichsuNhapkho_NhanVien" Association="Self.FK_LichsuNhapkho_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="LichsuXuatNhapkho" EntitySet="LichsuXuatNhapkhoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichsuXuatNhapkho_Product" Association="Self.FK_LichsuXuatNhapkho_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="LichsuXuatNhapkho" EntitySet="LichsuXuatNhapkhoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeLogin_NhanVien" Association="Self.FK_TimeLogin_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="TimeLogin" EntitySet="TimeLogins" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLPHModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLPHModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spHoadonThanhtoan" ReturnType="Collection(QLPHModel.spHoadonThanhtoan_Result)">
+      <Parameter Name="hoadonID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spHoadonThanhtoan_Result">
+    <Property Type="Int32" Name="hoadonID" Nullable="false" />
+    <Property Type="DateTime" Name="ThoigianBatdau" Nullable="true" Precision="23" />
+    <Property Type="String" Name="HoTen" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="HoTen1" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>

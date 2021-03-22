@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d702e7063ce945b7acb89b4d14eddaac" Name="Diagram1">
+        <EntityTypeShape EntityType="QLPHModel.ChitietHoadon" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.Hoadon" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.KhachHang" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.LichsuXuatNhapkho" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.NhanVien" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.Phonghat" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPHModel.TimeLogin" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="QLPHModel.FK_ChitietHoadon_Hoadon" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_ChitietHoadon_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_Hoadon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_Hoadon_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_Hoadon_Phonghat" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_Phonghat_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_LichsuNhapkho_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_LichsuXuatNhapkho_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPHModel.FK_TimeLogin_NhanVien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLPH", "QLPH.csproj", "{26BCA495-E3A8-4BA9-ACBD-A5E57902E38D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGBK3", "..\..\C#\MGBK3\MGBK3.csproj", "{D9C46B68-8764-4DA5-A2BB-C39463682036}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26BCA495-E3A8-4BA9-ACBD-A5E57902E38D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BCA495-E3A8-4BA9-ACBD-A5E57902E38D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BCA495-E3A8-4BA9-ACBD-A5E57902E38D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BCA495-E3A8-4BA9-ACBD-A5E57902E38D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C46B68-8764-4DA5-A2BB-C39463682036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C46B68-8764-4DA5-A2BB-C39463682036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C46B68-8764-4DA5-A2BB-C39463682036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C46B68-8764-4DA5-A2BB-C39463682036}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8835D700-CEFA-4D30-9E6D-94E53BE4B331}
+	EndGlobalSection
+EndGlobal
